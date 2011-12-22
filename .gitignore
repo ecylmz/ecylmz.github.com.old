@@ -1,0 +1,6 @@
+.last_post
+.*.swp
+.*.swo
+*~
+_site/
+_/

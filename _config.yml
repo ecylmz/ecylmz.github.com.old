@@ -1,0 +1,41 @@
+permalink: /:categories:month/:title
+markdown: rdiscount
+rdiscount:
+  extensions: [smart]
+pygments: true
+url: http://ecylmz.com
+exclude:
+        - Rakefile
+        - Makefile
+        - presentation.md
+        - presentation.html
+        - presentation.png
+        - media
+
+account: ecylmz
+archive: Son Girdiler
+assets: /assets
+author: Emre Can Yılmaz
+disqus: ecylmz
+email: ecylmz@bil.omu.edu.tr
+facebook: https://facebook.com/ecylmz
+feed: http://feeds.feedburner.com/ecylmz
+flickr: http://flickr.com/photos/ecylmz
+google: ~
+googleanalyticsid: UA-17317907-1
+googleplus: https://plus.google.com/104216591877418020240
+gpg: 3FD25C84
+homeurl: http://ecylmz.com
+logo: /assets/19/19-normal-128x128.png
+organization: 19
+picasa: ~
+related: Diğer Girdiler
+repository: ecylmz.github.com
+ribbon: GitHub'dayım
+title: Emre Can Yılmaz
+twitter: http://twitter.com/ecylmz
+
+navigator:
+        0: Teknik Olmayan Yazılar
+        1: Teknik Yazılar
+        9: Kısa Notlar
