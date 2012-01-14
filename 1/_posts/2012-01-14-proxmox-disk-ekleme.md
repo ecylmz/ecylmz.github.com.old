@@ -34,28 +34,28 @@ biçimlendirip gerekli yere bağlamamız gerekmektedir.
 
 Debian üzerinden işlemlere devam ediyorum:
 
-	sudo fdisk -l
+		sudo fdisk -l
 
 ile diskimizin hangi isimde makinede tutulduğunu öğreniyoruz. Ben sdb olarak
 isimlendirildiğini kabul ediyorum.
 
 - ext3 formatında biçimlendirelim:
 
-	sudo mkfs -t ext3 /dev/sdb
+		sudo mkfs -t ext3 /dev/sdb
 
 - Diski nereye bağlayacaksak o klasörü oluştururuz:
 
-	sudo mkdir /opt/sdb
+		sudo mkdir /opt/sdb
 
 - fstab düzenlenir:
 
-	#
-	# Dosya: /etc/fstab
-	#
-	/dev/sdb /opt/sdb ext3 defaults 1 2
+		#
+		# Dosya: /etc/fstab
+		#
+		/dev/sdb /opt/sdb ext3 defaults 1 2
 
 - Reboot etmeden hemen bağlamak istiyorsanız:
 
-	sudo mount -a
+		sudo mount -a
 
 ve `/opt/sdb` kullanıma hazır.
