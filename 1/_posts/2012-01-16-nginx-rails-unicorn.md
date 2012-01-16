@@ -6,6 +6,7 @@ title: nginx, rails ve unicorn
 Önceki yazılarımdan [birinde](http://ecylmz.com/107/nginx-rails-ve-thin/) nginx, rails ve thin'i yazmıştım. Bu sefer
 thin'den daha iyi olan ve [GitHub](https://github.com/blog/517-unicorn)'ın da kullandığı unicorn'un kullanımını yazıyorum.
 
+![unicorn](https://github.com/images/error/angry_unicorn.png)
 ### unicorn kurulumu
 
 	sudo gem install unicorn
