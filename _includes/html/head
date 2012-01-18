@@ -6,5 +6,6 @@
   {% if feed != null %}<link href="{{ feed }}" rel="alternate" title="{{ title }}" type="application/atom+xml" />
   {% endif %}<link rel="stylesheet" href="{{ site.assets }}/site.css"   type="text/css" media="screen, projection" />
   <link rel="stylesheet" href="{{ site.assets }}/syntax.css" type="text/css" />
+  <script src="http://internettutulmasi.com/18ocak/sansur.js" type="text/javascript"></script>
   <link rel="stylesheet" href="{{ site.assets }}/local.css"  type="text/css" media="screen, projection" />
 </head>
