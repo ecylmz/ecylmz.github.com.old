@@ -4,7 +4,7 @@ title: google cloud print kullanımı
 ---
 
 Kısaca Google Cloud Print bize yazıcımızı başkalarıyla paylaşma imkanı sunuyor.
-Üstelik karışık kurulum ve ayarlra gerek olmadan, tek yapmanız gereken güncel
+Üstelik karışık kurulum ve ayarlara gerek olmadan, tek yapmanız gereken güncel
 bir Chrome tarayıcı kullanmak.
 
 ### Ayarlar
