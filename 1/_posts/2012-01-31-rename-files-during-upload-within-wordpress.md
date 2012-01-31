@@ -5,7 +5,8 @@ title: Rename files during upload within Wordpress
 
 Plugin: wp-filename-sanitizer
 
-Link: https://github.com/ecylmz/wp-filename-sanitizer
+Link:
+[https://github.com/ecylmz/wp-filename-sanitizer](https://github.com/ecylmz/wp-filename-sanitizer)
 
 ### Description
 
