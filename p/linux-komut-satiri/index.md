@@ -4,6 +4,10 @@
 
 Emre Can Yılmaz `<ecylmz@bil.omu.edu.tr>`
 
+Ayşe Begüm Topyıldız `<beg@bil.omu.edu.tr>`
+
+M. Can Kurnaz `<technocan@bil.omu.edu.tr>`
+
 [http://ecylmz.com/](http://ecylmz.com/)
 
 ![tux](media/tux.png)
