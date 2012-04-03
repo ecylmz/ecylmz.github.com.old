@@ -16,10 +16,6 @@
   padding: 0;
 }
 
-html, body {
-  height: 100%;
-}
-
 body {
   background-color: #f0f0f0;
   margin-top: 1.0em;
@@ -28,17 +24,28 @@ body {
   text-align: center;
 }
 
-h1 {
-  font-size: 110%;
+pre, code {
+  font-family: Monaco, monospace;
 }
 
-h2, h3, h4, h5, h6 {
-  font-size: 100%;
-  margin-top: 1em;
+h1 {
+  font-size: 140%;
+}
+h2 {
+  font-size: 130%;
+}
+h3 {
+  font-size: 120%;
+}
+h4, h5, h6 {
+  font-size: 110%;
 }
 
 h1 {
   margin-bottom: 1em;
+}
+h2, h3, h4, h5, h6 {
+  margin-top: 1em;
 }
 
 p {
@@ -217,7 +224,7 @@ ul.posts {
   #post code {
     border: 1px solid #ddd;
     background-color: #eef;
-    font-size: 85%;
+    font-size: 95%;
     padding: 0 .2em;
   }
 

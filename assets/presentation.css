@@ -3,9 +3,9 @@
 ul li {
   list-style: none;
   list-style-type: none;
-  margin-left: -1.5em;
+  margin-left: -26px;
   padding-left: 1em;
-  text-indent: -1.3em;
+  text-indent: -32px;
 }
 ul li pre { text-indent: 0; }
 ul li:before {
@@ -22,29 +22,70 @@ ul li:first {
 li p { display: inline; }
 li pre { margin-left: 2em; }
 
-/*
- * Limit pre area's height and allow using a vertical scrollbar for overflowed
- * content (I think this might be considered as the most appealing reason for
- * using html slides involving codes).
- */
-.gist .gist-file .gist-data pre, pre {
+a {
+  text-decoration: none;
+  color: #1571e1;
+  border: none;
+  display: inline !important;
+}
+
+pre, code, tt {
+  font-family: Monaco, Consolas, 'Bitstream Vera Sans Mono', 'Lucida Console', FreeMono, Courier, monospace;
+}
+
+pre, .gist .gist-file .gist-data {
+  font-size: 18px;
   max-height: 485px;
   padding-top: 0.25em !important;
   padding-right: 0.5em !important;
-  padding-left: 1em !important;
+  padding-left: 0.5em !important;
   overflow: auto;
-  font-family: 'Monaco', 'Bitstream Vera Sans Mono', 'Lucida Console', 'FreeMono', Monospace;
 }
-::-webkit-scrollbar {
-  height: 8px;
-  width: 8px;
+
+code {
+  background: #ffffff;
+  padding: 0.1em;
+  padding-right: 0.15em;
+  border-top-right-radius: 0.2em;
+  -moz-border-radius-topright: 0.2em;
+  -webkit-border-top-right-radius: 0.2em;
+  border-bottom-left-radius: 2px;
+  -moz-border-radius-bottomleft: 0.2em;
+  -webkit-border-bottom-left-radius: 0.2em;
+  border-top-left-radius: 0.2em;
+  -moz-border-radius-topleft: 0.2em;
+  -webkit-border-top-left-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+  -moz-border-radius-bottomright: 0.2em;
+  -webkit-border-bottom-right-radius: 0.2em;
 }
+pre, pre code {
+  background: none;
+}
+
+div.slide {
+  background: -webkit-gradient(linear, left bottom, left top, from(#eee), to(#eaeaea));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #eee, #eaeaea);
+  border-top-right-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  -webkit-border-top-right-radius: 20px;
+  border-bottom-left-radius: 2px;
+  -moz-border-radius-bottomleft: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -webkit-border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  -moz-border-radius-bottomright: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+}
+
 ::-webkit-scrollbar-thumb {
-  background: -webkit-gradient(linear, left bottom, left top, from(#9c000d), to(#eeeeee));
-  -webkit-border-radius: 1ex;
+  background: -webkit-gradient(linear, left bottom, left top, from(#9c000d), to(#eee));
 }
-::-webkit-scrollbar-corner {
-  background: #dedede;
+::-webkit-scrollbar-thumb:horizontal { /* no horizontal scrollbar */
+  background: none;
 }
 
 .slide.achtung {
@@ -79,21 +120,16 @@ li pre { margin-left: 2em; }
   -moz-border-radius: 0.15em 0.15em 0.15em 0.15em;
   border-radius: 0.15em 0.15em 0.15em 0.15em;
   height: 80px;
-  font-family: 'Ubuntu Titling', 'Lucida Grande';
 }
 .slide.first section {
   padding-top: 90px;
 }
 
-a {
-  text-decoration: none;
-  color: #1571e1;
-  border: none;
-  display: inline !important;
-}
-
 .section {
   color: black;
 }
+
+/* Pygments */
+.err { border: 0px; }
 
 /* end presentation.css */

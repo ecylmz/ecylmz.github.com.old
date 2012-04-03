@@ -14,6 +14,8 @@ CONFIG = Config.fetch('presentation', {})
 PRESENTATION_DIR = CONFIG.fetch('directory', 'p')
 # Öntanımlı landslide yapılandırması
 DEFAULT_CONFFILE = CONFIG.fetch('conffile', '_templates/presentation.cfg')
+# Öntanımlı landslide javascript dosyası
+DEFAULT_JSFILE = CONFIG.fetch('conffile', 'assets/presentation.js')
 # Sunum indeksi
 INDEX_FILE = File.join(PRESENTATION_DIR, 'index.html')
 # İzin verilen en büyük resim boyutları
@@ -26,12 +28,17 @@ DEPEND_ALWAYS  = %w(media)
 TASKS = {
     :index   => 'sunumları indeksle',
     :build   => 'sunumları oluştur',
+    :rebuild => 'sunumları (zorla) yeniden oluştur',
     :clean   => 'sunumları temizle',
     :view    => 'sunumları görüntüle',
     :run     => 'sunumları sun',
+    :zip     => 'sunumları paketle',
     :optim   => 'resimleri iyileştir',
     :default => 'öntanımlı görev',
 }
+
+# ERB şablonları için
+BINDING = binding
 
 # Sunum bilgileri
 presentation   = {}
@@ -61,7 +68,7 @@ end
 
 def png_optim(file, threshold=40000)
   return if File.new(file).size < threshold
-  sh "pngnq -f -e .png-nq #{file}"
+  %x(pngnq -f -e .png-nq #{file})
   out = "#{file}-nq"
   if File.exist?(out)
     $?.success? ? File.rename(out, file) : File.delete(out)
@@ -70,9 +77,15 @@ def png_optim(file, threshold=40000)
   png_comment(file, 'raked')
 end
 
+def png_optimized?(file)
+  # Imagemagick ile gelen identify çalışmıyor?
+  # 	identify -format '%c' #{f}} =~ /[Rr]aked/
+  system "egrep -qi 'extcomment.raked' #{file}"
+end
+
 def jpg_optim(file)
-  sh "jpegoptim -q -m80 #{file}"
-  sh "mogrify -comment 'raked' #{file}"
+  %x(jpegoptim -q -m80 #{file})
+  %x(mogrify -comment 'raked' #{file})
 end
 
 def optim
@@ -80,16 +93,16 @@ def optim
 
   # Optimize edilmişleri çıkar.
   [pngs, jpgs].each do |a|
-    a.reject! { |f| %x{identify -format '%c' #{f}} =~ /[Rr]aked/ }
+    a.reject! { |f| png_optimized?(f) }
   end
 
   # Boyut düzeltmesi yap.
   (pngs + jpgs).each do |f|
     w, h = %x{identify -format '%[fx:w] %[fx:h]' #{f}}.split.map { |e| e.to_i }
     size, i = [w, h].each_with_index.max
-    if size > IMAGE_GEOMETRY[i]
+    if size and size > IMAGE_GEOMETRY[i]
       arg = (i > 0 ? 'x' : '') + IMAGE_GEOMETRY[i].to_s
-      sh "mogrify -resize #{arg} #{f}"
+      %x(mogrify -resize #{arg} #{f})
     end
   end
 
@@ -102,17 +115,46 @@ def optim
   (pngs + jpgs).each do |f|
     name = File.basename f
     FileList["*/*.md"].each do |src|
-      sh "grep -q '(.*#{name})' #{src} && touch #{src}"
+      %x(grep -q '(.*#{name})' #{src} && touch #{src})
     end
   end
 end
 
+# ------------------------------------------------------------------------------
+# Ana kod
+# ------------------------------------------------------------------------------
+
 # Alt dizinlerde yapılandırma dosyasına mutlak dosya yoluyla erişiyoruz
 default_conffile = File.expand_path(DEFAULT_CONFFILE)
+
+new_files = %w(assets/my.css assets/my.js)
+js_template = File.join('_templates', File.basename(DEFAULT_JSFILE)) + '.erb'
+
+if File.exists? js_template
+  file DEFAULT_JSFILE => [js_template, '_config.yml'] do |t|
+    content = ERB.new(File.read(t.prerequisites[0])).result(BINDING)
+    isnew = ! File.exists?(t.name)
+    File.open(t.name, 'w') { |f| f.write content }
+    cry "yeni dosya: '#{t.name}'; 'git add' ile depoya eklemeyi unutmayın" if isnew
+  end
+else
+    new_files << DEFAULT_JSFILE
+end
+
+new_files.each do |f|
+  unless File.exists? f
+    %x(touch #{f})
+    cry "yeni dosya: '#{f}'; 'git add' ile depoya eklemeyi unutmayın"
+  end
+end
 
 # Sunum bilgilerini üret
 FileList[File.join(PRESENTATION_DIR, "[^_.]*")].each do |dir|
   next unless File.directory?(dir)
+  deps = []
+
+  deps << default_conffile
+
   chdir dir do
     name = File.basename(dir)
     conffile = File.exists?('presentation.cfg') ? 'presentation.cfg' : default_conffile
@@ -122,24 +164,23 @@ FileList[File.join(PRESENTATION_DIR, "[^_.]*")].each do |dir|
 
     landslide = config['landslide']
     if ! landslide
-      $stderr.puts "#{dir}: 'landslide' bölümü tanımlanmamış"
-      exit 1
+      die "#{dir}: 'landslide' bölümü tanımlanmamış"
     end
 
     if landslide['destination']
-      $stderr.puts "#{dir}: 'destination' ayarı kullanılmış; hedef dosya belirtilmeyin"
-      exit 1
+      die "#{dir}: 'destination' ayarı kullanılmış; hedef dosya belirtilmeyin"
     end
 
     if File.exists?('index.md')
+      source = 'index.md'
       base = 'index'
       ispublic = true
     elsif File.exists?('presentation.md')
+      source = 'presentation.md'
       base = 'presentation'
       ispublic = false
     else
-      $stderr.puts "#{dir}: sunum kaynağı 'presentation.md' veya 'index.md' olmalı"
-      exit 1
+      die "#{dir}: sunum kaynağı 'presentation.md' veya 'index.md' olmalı"
     end
 
     basename = base + '.html'
@@ -147,9 +188,24 @@ FileList[File.join(PRESENTATION_DIR, "[^_.]*")].each do |dir|
     target = File.to_herepath(basename)
 
     # bağımlılık verilecek tüm dosyaları listele
-    deps = []
-    (DEPEND_ALWAYS + landslide.values_at(*DEPEND_KEYS)).compact.each do |v|
+    DEPEND_ALWAYS.compact.each do |v|
       deps += v.split.select { |p| File.exists?(p) }.map { |p| File.to_filelist(p) }.flatten
+    end
+    landslide.values_at(*DEPEND_KEYS).compact.each do |v|
+      deps += v.split.map { |p| File.to_filelist(p) }.flatten
+    end
+
+    # eklenen kod dosyalarını da bağımlılıklara ekle
+    # bu lojiğin burada yeri olmamalı, ama iş görüyor ;-)
+    dirs = landslide['includepath'].split /:/
+    IO.read(source).scan(/^[.](code|coden|include|includen)[:]\s+(\S+)/m).each do |m|
+      dirs.each do |d|
+        f = File.expand_path(File.join(d, m[1]))
+        if File.exists?(f)
+          deps << f
+          break
+        end
+      end
     end
 
     # bağımlılık ağacının çalışması için tüm yolları bu dizine göreceli yap
@@ -162,6 +218,7 @@ FileList[File.join(PRESENTATION_DIR, "[^_.]*")].each do |dir|
 
    presentation[dir] = {
       :basename  => basename,	# üreteceğimiz sunum dosyasının baz adı
+      :source    => source,     # lanslide kaynağı
       :conffile  => conffile,	# landslide konfigürasyonu (mutlak dosya yolu)
       :deps      => deps,	# sunum bağımlılıkları
       :directory => dir,	# sunum dizini (tepe dizine göreli)
@@ -191,10 +248,13 @@ presentation.each do |presentation, data|
   ns = namespace presentation do
     # sunum dosyaları
     file data[:target] => data[:deps] do |t|
+      puts color(data[:name], :headline)
       chdir presentation do
-        sh "landslide -i #{data[:conffile]}"
+        %x(landslide -i #{data[:conffile]})
         # XXX: Slayt bağlamı iOS tarayıcılarında sorun çıkarıyor.  Kirli bir çözüm!
-        sh 'sed -i -e "s/^\([[:blank:]]*var hiddenContext = \)false\(;[[:blank:]]*$\)/\1true\2/" presentation.html'
+        # cmd=%q[
+        #   sed -i -e "s/^\([[:blank:]]*var hiddenContext *= *\)false\(;[[:blank:]]*$\)/\1true\2/" presentation.html
+        # ]; %x(#{cmd})
         unless data[:basename] == 'presentation.html'
           mv 'presentation.html', data[:basename]
         end
@@ -204,14 +264,16 @@ presentation.each do |presentation, data|
     # küçük resimler
     file data[:thumbnail] => data[:target] do
       next unless data[:public]
-      sh "cutycapt " +
-          "--url=file://#{File.absolute_path(data[:target])}#slide1 " +
-          "--out=#{data[:thumbnail]} " +
-          "--user-style-string='div.slides { width: 900px; overflow: hidden; }' " +
-          "--min-width=1024 " +
-          "--min-height=768 " +
-          "--delay=1000"
-      sh "mogrify -resize 240 #{data[:thumbnail]}"
+      %x(
+        cutycapt \
+          --url=file://#{File.absolute_path(data[:target])}#slide1 \
+          --out=#{data[:thumbnail]} \
+          --user-style-string='div.slides { width: 900px; overflow: hidden; }' \
+          --min-width=960 \
+          --min-height=720 \
+          --delay=1000
+      )
+      %x(mogrify -resize 240 #{data[:thumbnail]})
       png_optim(data[:thumbnail])
     end
 
@@ -223,13 +285,20 @@ presentation.each do |presentation, data|
 
     task :index => data[:thumbnail]
 
+    task :force do
+      %x(touch #{presentation}/#{data[:source]})
+    end
+
     task :build => [:optim, data[:target], :index]
+
+    desc "sadece bu sunumu yeniden oluştur"
+    task :rebuild => [:force, :build]
 
     task :view do
       if File.exists?(data[:target])
-        sh "touch #{data[:directory]}; #{browse_command data[:target]}"
+        %x(#{browse_command data[:target]})
       else
-        $stderr.puts "#{data[:target]} bulunamadı; önce inşa edin"
+        cry "#{data[:target]} bulunamadı; önce inşa edin"
       end
     end
 
@@ -240,7 +309,10 @@ presentation.each do |presentation, data|
       rm_f data[:thumbnail]
     end
 
-    task :default => :build
+    task :zip => [:build] do
+      t = "_archive/#{data[:name]}"
+      %x(mkdir -p _archive; cp #{data[:target]} #{t}.html; zip -jm #{t}.zip #{t}.html)
+    end
   end
 
   # alt görevleri görev tablosuna işle
@@ -259,7 +331,7 @@ namespace :p do
     task name[0] => name
   end
 
-  task :build do
+  task :index do
     index = YAML.load_file(INDEX_FILE) || {}
     presentations = presentation.values.select { |v| v[:public] }.map { |v| v[:directory] }.sort
     unless index and presentations == index['presentations']
@@ -271,11 +343,15 @@ namespace :p do
     end
   end
 
+  task :build do
+    Rake::Task["p:index"].invoke
+  end
+
   desc "sunum menüsü"
   task :menu do
     lookup = Hash[
       *presentation.sort_by do |k, v|
-        File.mtime(v[:directory])
+        File.mtime(File.exists?(v[:target]) ? v[:target] : v[:directory])
       end
       .reverse
       .map { |k, v| [v[:name], k] }
@@ -297,3 +373,7 @@ end
 desc "sunum menüsü"
 task :p => ["p:menu"]
 task :presentation => :p
+
+task :default do
+  Rake::Task["p:build"].invoke
+end

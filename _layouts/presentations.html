@@ -2,12 +2,32 @@
 layout: default
 ---
 
-<div id="presentation-multicolumn">
-<p>
+<div id="presentation-notice" style="padding-top: 1em;">
+  <p><strong>Sunumlar Microsoft® IE'de görüntülenememektedir.</strong>
+  Sunumları düzgün şekilde görüntülemek için tercihen WebKit tabanlı bir
+  tarayıcı: <a href="http://www.google.com/chrome">Google® Chrome</a> veya
+  Apple® Safari kullanın.  Firefox (IceWeasel) veya Opera da
+  kullanabilirsiniz.</p>
+</div>
+
+<div id="presentation-help" style="margin-bottom: 1.5em;">
+  <p>Sunumların tam ekran görüntülenmesi önerilir (Google Chrome'da
+  <strong>F11</strong> tuşu).  Sunumda kullanılabilecek kısayollar:</p>
+
+  <ul style="margin-left: 1.25em; -moz-column-count: 3; -webkit-column-count: 3;">
+    <li><strong>Sol/Sağ Ok (Boşluk)</strong>: Geri/İleri</li>
+    <li><strong>Esc</strong>: Toplu görünüm</li>
+    <li><strong>t</strong>: İçindekiler</li>
+    <li><strong>c</strong>: Slayt bağlamı Aç/Kapa</li>
+    <li><strong>n</strong>: Slayt numaraları</li>
+    <li><strong>h</strong>: Yardım</li>
+  </ul>
+</div>
+
+<div id="presentation-multicolumn" style="-moz-column-count: 3; -webkit-column-count: 3;">
 {% for p in page.presentations %}
   <a class="presentation-link" href="/{{ p }}/">
     <span class="presentation-thumbnail"><img src="/{{ p }}/index.png"></span>
   </a>
 {% endfor %}
-</p>
 </div>
