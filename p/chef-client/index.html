@@ -1503,8 +1503,8 @@ div.slide {
             currentSlideNo = Number(window.location.hash.replace('#slide', ''));
         }
 
-        // disable context on small screens
-        if (window.screen.availWidth < 1280) {
+        // hide context on small screens and iframes
+        if (window.screen.availWidth < 1280 || top != self) {
             hiddenContext = true;
         }
 
@@ -1612,7 +1612,7 @@ _gaq.push(['_trackPageview']);
             <header><h1>Chef-Client</h1></header>
             
             
-            <section><p>Emre Can Yılmaz <code>ecylmz@bil.omu.edu.tr</code></p>
+            <section><p>Emre Can Yılmaz <code>&lt;ecylmz@bil.omu.edu.tr&gt;</code></p>
 <p><a href="http://ecylmz.com">http://ecylmz.com/</a></p>
 <p><img alt="chef" src="data:image/png;base64,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" /></p>
 <p>Nisan 2012</p></section>
@@ -1631,7 +1631,7 @@ _gaq.push(['_trackPageview']);
             </aside>
             
             <aside class="page_number">
-              1/9
+              1/8
             </aside>
           </footer>
         </div>
@@ -1659,7 +1659,7 @@ _gaq.push(['_trackPageview']);
             </aside>
             
             <aside class="page_number">
-              2/9
+              2/8
             </aside>
           </footer>
         </div>
@@ -1667,15 +1667,26 @@ _gaq.push(['_trackPageview']);
       
       <!-- slide source: ./index.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Client Kurulumu</h1></header>
             
             
             <section><p>Ubuntu'da Chef 0.10.x icin:</p>
-<pre><code>echo "deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main" | sudo tee /etc/apt/sources.list.d/opscode.list
-</code></pre></section>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;deb http://apt.opscode.com/ `lsb_release -cs`-0.10 main&quot;</span> | <span class="se">\</span>
+    sudo tee /etc/apt/sources.list.d/opscode.list
+</pre></div>
+
+<p>GPG Anahtarı Ekleyelim:</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo mkdir -p /etc/apt/trusted.gpg.d
+
+<span class="nv">$ </span>gpg --keyserver keys.gnupg.net --recv-keys 83EF826A
+
+<span class="nv">$ </span>gpg --export packages@opscode.com | sudo tee <span class="se">\</span>
+    /etc/apt/trusted.gpg.d/opscode-keyring.gpg &gt; /dev/null
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -1691,7 +1702,7 @@ _gaq.push(['_trackPageview']);
             </aside>
             
             <aside class="page_number">
-              3/9
+              3/8
             </aside>
           </footer>
         </div>
@@ -1699,19 +1710,19 @@ _gaq.push(['_trackPageview']);
       
       <!-- slide source: ./index.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
+            <header><h1>Client Kurulumu</h1></header>
             
-            <section><p>GPG Anahtarı Ekleyelim:</p>
-<pre><code>$ sudo mkdir -p /etc/apt/trusted.gpg.d
-$ gpg --keyserver keys.gnupg.net --recv-keys 83EF826A
-$ gpg --export packages@opscode.com | sudo tee /etc/apt/trusted.gpg.d/opscode-keyring.gpg &gt; /dev/null
-</code></pre>
-<p><strong>Sorun çıkması halinde</strong></p>
-<pre><code>$ gpg --fetch-key http://apt.opscode.com/packages@opscode.com.gpg.key
-$ gpg --export packages@opscode.com | sudo tee /etc/apt/trusted.gpg.d/opscode-keyring.gpg &gt; /dev/null
-</code></pre></section>
+            
+            <section><p><strong>Bir önceki adımda sorun çıkması halinde</strong></p>
+<div class="highlight"><pre><span class="nv">$ </span>gpg --fetch-key http://apt.opscode.com/packages@opscode.com.gpg.key
+
+<span class="nv">$ </span>gpg --export packages@opscode.com | sudo tee <span class="se">\</span>
+    /etc/apt/trusted.gpg.d/opscode-keyring.gpg &gt; /dev/null
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -1727,7 +1738,7 @@ $ gpg --export packages@opscode.com | sudo tee /etc/apt/trusted.gpg.d/opscode-ke
             </aside>
             
             <aside class="page_number">
-              4/9
+              4/8
             </aside>
           </footer>
         </div>
@@ -1735,48 +1746,26 @@ $ gpg --export packages@opscode.com | sudo tee /etc/apt/trusted.gpg.d/opscode-ke
       
       <!-- slide source: ./index.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
+            
+            <header><h1>Client Kurulumu</h1></header>
             
             
             <section><p>Opscode Deposu etkinleştirilir ve varolan paketler yükseltilir:</p>
-<pre><code>$ sudo apt-get update
-$ sudo apt-get install opscode-keyring # permanent upgradeable keyring
-$ sudo apt-get upgrade
-</code></pre></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="./index.md">./index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              5/9
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: ./index.md -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            
-            <section><p>Chef paketi yüklenir:</p>
-<pre><code>sudo apt-get install chef
-</code></pre>
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get update
+
+<span class="nv">$ </span>sudo apt-get install opscode-keyring
+
+<span class="nv">$ </span>sudo apt-get upgrade
+</pre></div>
+
+<p>Chef paketi yüklenir:</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install chef
+</pre></div>
+
 <p>Bu sırada ekrana chef-server url istenir:</p>
-<pre><code>http://foo.example.com:4000
-</code></pre></section>
+<p><code>http://foo.example.com:4000</code></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1792,7 +1781,7 @@ $ sudo apt-get upgrade
             </aside>
             
             <aside class="page_number">
-              6/9
+              5/8
             </aside>
           </footer>
         </div>
@@ -1800,52 +1789,29 @@ $ sudo apt-get upgrade
       
       <!-- slide source: ./index.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
             
             <header><h1>Client Yapılandırma</h1></header>
             
             
-            <section><pre><code>$ sudo mkdir -p /etc/chef
-</code></pre>
-<p>chef-server'dan <code>/etc/chef/validation.pem</code> bu client'a <code>/etc/chef</code> altına kopyalanır.</p></section>
-            
-          </div>
-          <div class="presenter_notes">
-            <header><h1>Presenter Notes</h1></header>
-            <section>
-            
-            </section>
-          </div>
-          <footer>
-            
-            <aside class="source">
-              Source: <a href="./index.md">./index.md</a>
-            </aside>
-            
-            <aside class="page_number">
-              7/9
-            </aside>
-          </footer>
-        </div>
-      </div>
-      
-      <!-- slide source: ./index.md -->
-      <div class="slide-wrapper">
-        <div class="slide">
-          <div class="inner">
-            
-            
-            <section><p>client.rb oluşturulur:</p>
-<pre><code>$ knife configure client ./
-</code></pre>
+            <section><p><strong>/etc/chef</strong> dizini oluşturulur:</p>
+<div class="highlight"><pre><span class="nv">$ </span>sudo mkdir -p /etc/chef
+</pre></div>
+
+<p>chef-server'dan <code>/etc/chef/validation.pem</code> bu client'a <code>/etc/chef</code> altına kopyalanır.</p>
+<p>client.rb oluşturulur:</p>
+<div class="highlight"><pre><span class="nv">$ </span>knife configure client ./
+</pre></div>
+
 <p>oluşturulan client.rb <code>/etc/chef</code> altına atılır.</p>
 <p>oluşturulan <code>client.rb</code>nin içeriği minimum şu şekilde olmalı:</p>
-<pre><code>log_level        :info
-log_location     STDOUT
-chef_server_url  'http://yourchefserver.com:4000'
-validation_client_name 'chef-validator'
-</code></pre></section>
+<div class="highlight"><pre><span class="n">log_level</span>        <span class="ss">:info</span>
+<span class="n">log_location</span>     <span class="no">STDOUT</span>
+<span class="n">chef_server_url</span>  <span class="s1">&#39;http://yourchefserver.com:4000&#39;</span>
+<span class="n">validation_client_name</span> <span class="s1">&#39;chef-validator&#39;</span>
+</pre></div>
+</section>
             
           </div>
           <div class="presenter_notes">
@@ -1861,7 +1827,7 @@ validation_client_name 'chef-validator'
             </aside>
             
             <aside class="page_number">
-              8/9
+              6/8
             </aside>
           </footer>
         </div>
@@ -1869,13 +1835,16 @@ validation_client_name 'chef-validator'
       
       <!-- slide source: ./index.md -->
       <div class="slide-wrapper">
-        <div class="slide">
+        <div class="slide has_code">
           <div class="inner">
+            
+            <header><h1>Client Yapılandırma</h1></header>
             
             
             <section><p>Her şey tamamsa son işlem olarak <code>chef-client</code> çalıştırılır:</p>
-<pre><code>$ sudo chef-client
-</code></pre>
+<div class="highlight"><pre><span class="nv">$ </span>sudo chef-client
+</pre></div>
+
 <p>Herhangi bir sorun yoksa chef-server'da client ve node'u oluşturur.
 Varsa run_list çalıştırılır.</p></section>
             
@@ -1893,17 +1862,22 @@ Varsa run_list çalıştırılır.</p></section>
             </aside>
             
             <aside class="page_number">
-              9/9
+              7/8
             </aside>
           </footer>
         </div>
       </div>
       
-      <!-- slide source:  -->
+      <!-- slide source: ./index.md -->
       <div class="slide-wrapper">
         <div class="slide">
           <div class="inner">
             
+            <header><h1>Kaynak</h1></header>
+            
+            
+            <section><p><img alt="chef" src="data:image/png;base64,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" /></p>
+<p><a href="http://wiki.opscode.com/display/chef/Installing+Chef+Client+on+Ubuntu+or+Debian">http://wiki.opscode.com/display/chef/Installing+Chef+Client+on+Ubuntu+or+Debian</a></p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1914,8 +1888,12 @@ Varsa run_list çalıştırılır.</p></section>
           </div>
           <footer>
             
+            <aside class="source">
+              Source: <a href="./index.md">./index.md</a>
+            </aside>
+            
             <aside class="page_number">
-              /9
+              8/8
             </aside>
           </footer>
         </div>
@@ -1948,19 +1926,19 @@ Varsa run_list çalıştırılır.</p></section>
       
       
       <tr id="toc-row-4">
-        <th><a href="#slide4">-</a></th>
+        <th><a href="#slide4">Client Kurulumu</a></th>
         <td><a href="#slide4">4</a></td>
       </tr>
       
       
       <tr id="toc-row-5">
-        <th><a href="#slide5">-</a></th>
+        <th><a href="#slide5">Client Kurulumu</a></th>
         <td><a href="#slide5">5</a></td>
       </tr>
       
       
       <tr id="toc-row-6">
-        <th><a href="#slide6">-</a></th>
+        <th><a href="#slide6">Client Yapılandırma</a></th>
         <td><a href="#slide6">6</a></td>
       </tr>
       
@@ -1972,14 +1950,8 @@ Varsa run_list çalıştırılır.</p></section>
       
       
       <tr id="toc-row-8">
-        <th><a href="#slide8">-</a></th>
+        <th><a href="#slide8">Kaynak</a></th>
         <td><a href="#slide8">8</a></td>
-      </tr>
-      
-      
-      <tr id="toc-row-9">
-        <th><a href="#slide9">-</a></th>
-        <td><a href="#slide9">9</a></td>
       </tr>
       
       
