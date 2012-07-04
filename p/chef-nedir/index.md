@@ -40,9 +40,9 @@ Temmuz 2012
 
   Ör: nginx kurulumu, rails sunucu kurulumu vb...
 
-- İstenilen sunucuların hepsinde, aynı işlemi tek bir kod'la yapmak mümkündür.
+- İstenilen sunucuların **hepsinde**, aynı işlemi tek bir kod'la yapmak mümkündür.
 
-  Ör: Sunucu güncelleştirmeleri, önemli bir paket kurulumu vs ...
+  Ör: Sistem saatinin 1 saniye ileri alınması, sunucu güncelleştirmeleri, önemli bir paket kurulumu vs ...
 
 ---
 
