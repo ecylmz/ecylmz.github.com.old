@@ -46,14 +46,14 @@ Temmuz 2012
 
 ---
 
-# Mimari Şema
+# Mimari Yapı
 
 ![chef-basics-nwc](media/chef-basics-nwc.png)
 
-- cookbook
-- node'lar run_list'lerindeki görevleri çalıştırır.
-- node'ların rolleri ve özellikleri vardır.
-- sunucu ve istemci knife üzerinden haberleşiyorlar
+- Yazılan her işe cookbook adı verilmektedir ve bunlar sunucuda durmaktadır.
+- Node'lar run_list'lerindeki görevleri çalıştırır.
+- Node'ların rolleri ve özellikleri vardır.
+- Sunucu ve istemci knife üzerinden haberleşiyorlar
 
 ---
 
