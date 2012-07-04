@@ -18,9 +18,8 @@ Temmuz 2012
 
 # Chef
 
-Chef, ruby ile işlemin nasıl yapılacağı tarif edilirek sistem yönetimi imkanı sağlar.
-
-Bu tarifler "cookbooks" olarak isimlendirilmiştir.
+- Sistem yönetimini kolaylaştırmayı hedefleyen, merkezi bir sistem tarafından
+  yönetilme amacıyla yazılmış açık kaynaklı bir yazılımdır.
 
 ---
 
@@ -51,9 +50,10 @@ Bu tarifler "cookbooks" olarak isimlendirilmiştir.
 
 ![chef-basics-nwc](media/chef-basics-nwc.png)
 
-- node run_list
-- node roles ve attributes
-- knife üzerinden haberleşiyorlar
+- cookbook
+- node'lar run_list'lerindeki görevleri çalıştırır.
+- node'ların rolleri ve özellikleri vardır.
+- sunucu ve istemci knife üzerinden haberleşiyorlar
 
 ---
 
