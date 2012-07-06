@@ -131,7 +131,7 @@ Aşağıdaki basit komutla sunucuda istemcileri doğrulayabiliriz:
 
 ---
 
-# Geliştirme Ortamı için Bilgisayarına Knife İstemci Oluştur
+# Kendi Bilgisayarına Knife İstemci Oluştur
 
     chef-server> knife client create my-username -d -a -f /tmp/my-username.pem
     INFO: Created (or updated) client[my-username]
