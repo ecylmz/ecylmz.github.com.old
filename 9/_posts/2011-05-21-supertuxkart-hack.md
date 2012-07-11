@@ -18,7 +18,7 @@ bunları değiştirince oyun tamamen amaçsız hale gelir :D
 tanınmaz hale getirebilirsiniz. biraz kurcalayarak neyin ne işe yaradığını
 öğrenebilirsiniz. :v
 
-mesela `/usr/share/games/supertuxkart/tracks/canyon/scene.xml` dosyasının
+mesela `/usr/share/games/supertuxkart/data/tracks/canyon/scene.xml` dosyasının
 içerisinde `canyon` yolunun içerisini istediğiniz düzende yeniden
 oluşturabilirsiniz. `track.xml` ile müziği, arka plan resmini
 değiştirebilirsiniz. gerisi sizin yaratıcılığınıza kalmış :d
