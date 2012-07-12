@@ -1673,12 +1673,12 @@ _gaq.push(['_trackPageview']);
             <section><p><strong>Bilgisayarlar ve diğer cihazlar haberleşmek için her birine bir ip adresi
 atanır.</strong></p>
 <p>209.85.129.103
-192.228.29.1
-74.125.77.106
-147.67.119.102
-142.236.154.112
-92.123.68.25
-193.252.122.103</p></section>
+   192.228.29.1
+   74.125.77.106
+   147.67.119.102
+   142.236.154.112
+   92.123.68.25
+   193.252.122.103</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1708,12 +1708,12 @@ atanır.</strong></p>
             
             <section><p><strong>İnsanlar ip adreslerini hatırlayamadıklarından kelimeleri kullanırlar</strong></p>
 <p>www.google.com
-www.cira.ca
-www.google.it
-www.euroa.eu
-www.servicecanada.gc.ca
-www.cbc.ca
-www.orange.fr</p></section>
+   www.cira.ca
+   www.google.it
+   www.euroa.eu
+   www.servicecanada.gc.ca
+   www.cbc.ca
+   www.orange.fr</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1744,12 +1744,12 @@ www.orange.fr</p></section>
             <section><p>Alan adı sistemi (DNS(Domain Name System)) ip adresleri ve onlara karşı
 kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz.</p>
 <p>209.85.129.103    -   www.google.com
-192.228.29.1      -   www.cira.ca
-74.125.77.106     -   www.google.it
-147.67.119.102    -   www.euroa.eu
-142.236.154.112   -   www.servicecanada.gc.ca
-92.123.68.25      -   www.cbc.ca
-193.252.122.103   -   www.orange.fr</p></section>
+   192.228.29.1      -   www.cira.ca
+   74.125.77.106     -   www.google.it
+   147.67.119.102    -   www.euroa.eu
+   142.236.154.112   -   www.servicecanada.gc.ca
+   92.123.68.25      -   www.cbc.ca
+   193.252.122.103   -   www.orange.fr</p></section>
             
           </div>
           <div class="presenter_notes">
@@ -1811,7 +1811,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
             <header><h1>DNS Sorgusu</h1></header>
             
             
-            <section><ol>
+            <section><ul>
 <li>
 <p>Web tarayıcısı adres satırına isim girdiğinizi anlar ve ip'sini bulmak için
    yerel çözümleyici çağırır.</p>
@@ -1824,7 +1824,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
    isimler statik olarak tanımlanır. Bu dosyada ip'i bulabilirse web tarayıcıya
    ip'i verir.</p>
 </li>
-</ol>
+</ul>
 <p>Örnek bir <code>/etc/hosts</code> dosyası:</p>
 <pre><code>127.0.0.1       localhost
 127.0.1.1       foo
@@ -1860,16 +1860,16 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
             <header><h1>DNS Sorgusu</h1></header>
             
             
-            <section><ol>
+            <section><ul>
 <li>Çözümleyici özyineli olarak bu sorguyu oluşturur ve cihazda tanımlanan,
    internet üzerindeki bir DNS sunucusuna sorguyu gönderir.Ubuntu'da DNS
    sunucularının adreslerini /etc/resolv.conf'da tanımlıyoruz.</li>
-</ol>
+</ul>
 <p>Örnek bir <strong>resolv.conf</strong> dosyası:</p>
 <pre><code>   nameserver 8.8.8.8
 </code></pre>
 <p>Diyelim ki DNS sunucusu olarak 8.8.8.8'i kullanıyoruz.</p>
-<ol>
+<ul>
 <li>
 <p>"8.8.8.8" www.example.com için tekrarlı sorgular üretir ve <strong>kök isim
    sunucusuna</strong> bu sorguları gönderir. (Tabi ki onun da önbelleğinde ip adresi
@@ -1879,7 +1879,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
 <p>Kök isim sunucusu ismi çözmez. O sadece ".com" domain'leriyle ilgilenen DNS
    sunucunun isminin ip'sini verir.</p>
 </li>
-</ol></section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1909,7 +1909,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
             <header><h1>DNS Sorgusu</h1></header>
             
             
-            <section><ol>
+            <section><ul>
 <li>
 <p>"8.8.8.8" sorguyu üretir ve ".com" domainlerinden sorumlu DNS sunucusuna
    sorguyu gönderir.</p>
@@ -1930,7 +1930,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
 <p>"8.8.8.8" bu cevabı önbelleğine kaydeder ve tanımlanan süre içerisinde bunu
     saklar.</p>
 </li>
-</ol></section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -1958,7 +1958,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
           <div class="inner">
             
             
-            <section><ol>
+            <section><ul>
 <li>
 <p>Yerel isim sunucusunda artık www.example.com'un ip adresi vardır ve
     bilgisayarınızdaki çözümleyiciye verir.</p>
@@ -1973,7 +1973,7 @@ kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz
 <p>Ve web tarayıcı HTTP isteklerini www.example.com'un ip'sine gönderir ve
     gelen cevabı render ederek sayfayı ekrana bastırır.</p>
 </li>
-</ol></section>
+</ul></section>
             
           </div>
           <div class="presenter_notes">

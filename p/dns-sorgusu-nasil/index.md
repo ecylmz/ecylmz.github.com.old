@@ -17,25 +17,25 @@ Temmuz 2012
 **Bilgisayarlar ve diğer cihazlar haberleşmek için her birine bir ip adresi
 atanır.**
 
-209.85.129.103
-192.228.29.1
-74.125.77.106
-147.67.119.102
-142.236.154.112
-92.123.68.25
-193.252.122.103
+   209.85.129.103
+   192.228.29.1
+   74.125.77.106
+   147.67.119.102
+   142.236.154.112
+   92.123.68.25
+   193.252.122.103
 
 ---
 
 **İnsanlar ip adreslerini hatırlayamadıklarından kelimeleri kullanırlar**
 
-www.google.com
-www.cira.ca
-www.google.it
-www.euroa.eu
-www.servicecanada.gc.ca
-www.cbc.ca
-www.orange.fr
+   www.google.com
+   www.cira.ca
+   www.google.it
+   www.euroa.eu
+   www.servicecanada.gc.ca
+   www.cbc.ca
+   www.orange.fr
 
 ---
 
@@ -43,13 +43,13 @@ Alan adı sistemi (DNS(Domain Name System)) ip adresleri ve onlara karşı
 kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz.
 
 
-209.85.129.103    -   www.google.com
-192.228.29.1      -   www.cira.ca
-74.125.77.106     -   www.google.it
-147.67.119.102    -   www.euroa.eu
-142.236.154.112   -   www.servicecanada.gc.ca
-92.123.68.25      -   www.cbc.ca
-193.252.122.103   -   www.orange.fr
+   209.85.129.103    -   www.google.com
+   192.228.29.1      -   www.cira.ca
+   74.125.77.106     -   www.google.it
+   147.67.119.102    -   www.euroa.eu
+   142.236.154.112   -   www.servicecanada.gc.ca
+   92.123.68.25      -   www.cbc.ca
+   193.252.122.103   -   www.orange.fr
 
 ---
 
@@ -65,10 +65,10 @@ Sırasıyla şunlar olmaktadır:
 
 # DNS Sorgusu
 
-1. Web tarayıcısı adres satırına isim girdiğinizi anlar ve ip'sini bulmak için
+- Web tarayıcısı adres satırına isim girdiğinizi anlar ve ip'sini bulmak için
    yerel çözümleyici çağırır.
 
-2. Çözümleyici önbelleği (cache) kontrol eder, eğer daha önceden bu isim için ip
+- Çözümleyici önbelleği (cache) kontrol eder, eğer daha önceden bu isim için ip
    eşleştirilmesi yapılmışsa onu kullanır ve web tarayıcısına ip'i verir.
    Önbellekte eğer ki ip - isim eşleştirmesi yoksa; "host table file" denen
    dosyaya bakar( Bu Ubuntu'da /etc/hosts dosyasıdır ). Bu dosyada ip'lere
@@ -86,7 +86,7 @@ Sırasıyla şunlar olmaktadır:
 
 # DNS Sorgusu
 
-3. Çözümleyici özyineli olarak bu sorguyu oluşturur ve cihazda tanımlanan,
+- Çözümleyici özyineli olarak bu sorguyu oluşturur ve cihazda tanımlanan,
    internet üzerindeki bir DNS sunucusuna sorguyu gönderir.Ubuntu'da DNS
    sunucularının adreslerini /etc/resolv.conf'da tanımlıyoruz.
 
@@ -96,42 +96,42 @@ Sırasıyla şunlar olmaktadır:
 
 Diyelim ki DNS sunucusu olarak 8.8.8.8'i kullanıyoruz.
 
-4. "8.8.8.8" www.example.com için tekrarlı sorgular üretir ve **kök isim
+- "8.8.8.8" www.example.com için tekrarlı sorgular üretir ve **kök isim
    sunucusuna** bu sorguları gönderir. (Tabi ki onun da önbelleğinde ip adresi
    yoksa)
 
-5. Kök isim sunucusu ismi çözmez. O sadece ".com" domain'leriyle ilgilenen DNS
+- Kök isim sunucusu ismi çözmez. O sadece ".com" domain'leriyle ilgilenen DNS
    sunucunun isminin ip'sini verir.
 
 ---
 
 # DNS Sorgusu
 
-6. "8.8.8.8" sorguyu üretir ve ".com" domainlerinden sorumlu DNS sunucusuna
+- "8.8.8.8" sorguyu üretir ve ".com" domainlerinden sorumlu DNS sunucusuna
    sorguyu gönderir.
 
-7. .com'la ilgilenen sunucu "example.com"'un ip'sini döner.
+- .com'la ilgilenen sunucu "example.com"'un ip'sini döner.
 
-8. "8.8.8.8" example.com'la ilgilenen sunucuya www.example.com için sorgu
+- "8.8.8.8" example.com'la ilgilenen sunucuya www.example.com için sorgu
    gönderir.
 
-9. example.com kendi kaynaklarına bakar. www subdomain'i için
+- example.com kendi kaynaklarına bakar. www subdomain'i için
    yetkilendirildiğinden yani www ile o ilgilendiğinden www.example.com için
    ip'yi "8.8.8.8"'e verir.
 
-10. "8.8.8.8" bu cevabı önbelleğine kaydeder ve tanımlanan süre içerisinde bunu
+- "8.8.8.8" bu cevabı önbelleğine kaydeder ve tanımlanan süre içerisinde bunu
     saklar.
 
 ---
 
-11. Yerel isim sunucusunda artık www.example.com'un ip adresi vardır ve
+- Yerel isim sunucusunda artık www.example.com'un ip adresi vardır ve
     bilgisayarınızdaki çözümleyiciye verir.
 
-12. Yerel çözümleyici bu bilgiyi önbelleğine kaydeder.
+- Yerel çözümleyici bu bilgiyi önbelleğine kaydeder.
 
-13. Çözümleyici ip'i web tarayıcısına verir.
+- Çözümleyici ip'i web tarayıcısına verir.
 
-14. Ve web tarayıcı HTTP isteklerini www.example.com'un ip'sine gönderir ve
+- Ve web tarayıcı HTTP isteklerini www.example.com'un ip'sine gönderir ve
     gelen cevabı render ederek sayfayı ekrana bastırır.
 
 ---
