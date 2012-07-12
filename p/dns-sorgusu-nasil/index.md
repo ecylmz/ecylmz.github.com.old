@@ -1,4 +1,4 @@
-# DNS Sorugusu Nasıl Çalışıyor?
+# DNS Sorgusu
 
 .fx: first
 
