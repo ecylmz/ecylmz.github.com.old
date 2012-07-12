@@ -17,25 +17,25 @@ Temmuz 2012
 **Bilgisayarlar ve diğer cihazlar haberleşmek için her birine bir ip adresi
 atanır.**
 
-   209.85.129.103
-   192.228.29.1
-   74.125.77.106
-   147.67.119.102
-   142.236.154.112
-   92.123.68.25
-   193.252.122.103
+    209.85.129.103
+    192.228.29.1
+    74.125.77.106
+    147.67.119.102
+    142.236.154.112
+    92.123.68.25
+    193.252.122.103
 
 ---
 
 **İnsanlar ip adreslerini hatırlayamadıklarından kelimeleri kullanırlar**
 
-   www.google.com
-   www.cira.ca
-   www.google.it
-   www.euroa.eu
-   www.servicecanada.gc.ca
-   www.cbc.ca
-   www.orange.fr
+    www.google.com
+    www.cira.ca
+    www.google.it
+    www.euroa.eu
+    www.servicecanada.gc.ca
+    www.cbc.ca
+    www.orange.fr
 
 ---
 
@@ -43,13 +43,13 @@ Alan adı sistemi (DNS(Domain Name System)) ip adresleri ve onlara karşı
 kullanılan isimleri barındırır. Yani büyük bir veritabanıdır diyebiliriz.
 
 
-   209.85.129.103    -   www.google.com
-   192.228.29.1      -   www.cira.ca
-   74.125.77.106     -   www.google.it
-   147.67.119.102    -   www.euroa.eu
-   142.236.154.112   -   www.servicecanada.gc.ca
-   92.123.68.25      -   www.cbc.ca
-   193.252.122.103   -   www.orange.fr
+    209.85.129.103    -   www.google.com
+    192.228.29.1      -   www.cira.ca
+    74.125.77.106     -   www.google.it
+    147.67.119.102    -   www.euroa.eu
+    142.236.154.112   -   www.servicecanada.gc.ca
+    92.123.68.25      -   www.cbc.ca
+    193.252.122.103   -   www.orange.fr
 
 ---
 
