@@ -24,7 +24,7 @@ flickr: http://flickr.com/photos/ecylmz
 google: ~
 googleanalyticsid: UA-17317907-1
 domain: ecylmz.com
-googleplus: https://plus.google.com/104216591877418020240
+googleplus: 104216591877418020240
 gpg: 3FD25C84
 homeurl: http://ecylmz.com
 logo: /assets/19/19-normal-128x128.png
@@ -34,7 +34,7 @@ related: Diğer Girdiler
 repository: ecylmz.github.com
 ribbon: GitHub'dayım
 title: Emre Can Yılmaz
-twitter: http://twitter.com/emrecanylmz
+twitter: http://twitter.com/ecylmz_
 
 navigator:
         0: Teknik Olmayan Yazılar
