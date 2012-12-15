@@ -1,6 +1,7 @@
 <head>
   {% include html/getpageinfo %}<meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="author" content="{{ site.author }}" />
+  <meta http-equiv="pragma" content="no-cache">
   {% if page.moved %}<meta http-equiv="refresh" content="3; url=http://{{ page.moved }}">
   {% endif %}<title>{{ title }}</title>
   {% if feed != null %}<link href="{{ feed }}" rel="alternate" title="{{ title }}" type="application/atom+xml" />
