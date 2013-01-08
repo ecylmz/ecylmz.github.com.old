@@ -7,11 +7,6 @@ url: http://ecylmz.com
 exclude:
         - Rakefile
         - Makefile
-        - presentation.md
-        - presentation.html
-        - presentation.png
-        - media
-
 account: ecylmz
 archive: Son Girdiler
 assets: /assets
@@ -29,7 +24,6 @@ gpg: 3FD25C84
 homeurl: http://ecylmz.com
 logo: /assets/19/19-normal-128x128.png
 organization: 19
-picasa: ~
 related: Diğer Girdiler
 repository: ecylmz.github.com
 ribbon: GitHub'dayım
