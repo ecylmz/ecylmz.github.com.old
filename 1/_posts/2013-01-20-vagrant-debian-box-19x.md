@@ -18,3 +18,8 @@ Sonrasında ise aşağıdaki komutları komut satırına yazmanız gerekmektedir
         $ vagrant init debian19x
         $ vagrant up
         $ vagrant ssh
+
+Kullanıcı Adı    : vagrant  
+Kullanıcı Parola : vagrant  
+Root Parola    : vagrant  
+
