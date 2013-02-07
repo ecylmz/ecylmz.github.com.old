@@ -14,6 +14,7 @@ body {
 }
 
 .site {
+  background-color: #f0f0f0;
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
 }
