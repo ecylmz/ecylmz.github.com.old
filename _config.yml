@@ -13,7 +13,7 @@ assets: /assets
 author: Emre Can Yılmaz
 disqus: ecylmz
 email: ecylmz@bil.omu.edu.tr
-facebook: https://facebook.com/ecylmz
+facebook: ~
 feed: http://feeds.feedburner.com/ecylmz
 flickr: http://flickr.com/photos/ecylmz
 google: ~
@@ -28,7 +28,7 @@ related: Diğer Girdiler
 repository: ecylmz.github.com
 ribbon: GitHub'dayım
 title: Emre Can Yılmaz
-twitter: http://twitter.com/ecylmz_
+twitter: http://twitter.com/ecylmz
 
 navigator:
         0: Teknik Olmayan Yazılar
