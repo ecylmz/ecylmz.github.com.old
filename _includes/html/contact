@@ -5,7 +5,7 @@
     {% if site.gpg %}GnuPG ortak anahtar<br />
     {% endif %}Github<br />
     {% if site.googleplus %}Google Plus<br />
-    {% endif %}{% if site.twitter %}Twitter
+    {% endif %}{% if site.twitter %}Twitter<br \>
     {% endif %} {% if site.linkedin %} Linkedin
     {% endif %}</p>
 </div>
@@ -15,8 +15,8 @@
     {% if site.gpg %}<a href="{{ site.url }}/{{ site.account }}.asc"><code>{{ site.gpg }}</code></a><br />
     {% endif %}<a href="http://github.com/{{ site.account }}/">github.com/{{ site.account }}</a><br />
     {% if site.googleplus %}<a href="https://plus.google.com/{{ site.googleplus }}?rel=author"><code>{{ site.googleplus }}</code></a><br />
-    {% endif %}{% if site.twitter %}<a href="{{ site.twitter }}/">{{ site.twitter }}</a>
-    {% endif %}{% if site.linkedin %}<a href="http://http://www.linkedin.com/profile/view?id={{ site.linkedin }}/">{{ site.account }}</a>
+    {% endif %}{% if site.twitter %}<a href="{{ site.twitter }}/">{{ site.twitter }}</a><br \>
+    {% endif %}{% if site.linkedin %}<a href="http://www.linkedin.com/profile/view?id={{ site.linkedin }}/">{{ site.account }}</a>
     {% endif %}</p>
 </div>
 <!-- Contact start -->
